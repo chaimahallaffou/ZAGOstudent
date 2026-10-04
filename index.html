@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside id="side">
+  <h1>📘 <span>StudyHub</span></h1>
+  <nav>
+    <button data-v="dash"><b>🏠</b><span data-i="dash"></span></button>
+    <button data-v="notes"><b>📝</b><span data-i="notes"></span></button>
+    <button data-v="tasks"><b>✅</b><span data-i="tasks"></span></button>
+    <button data-v="pomo"><b>⏱️</b><span data-i="pomo"></span></button>
+    <button data-v="grades"><b>📈</b><span data-i="grades"></span></button>
+    <button data-v="cards"><b>🧠</b><span data-i="cards"></span></button>
+  </nav>
+</aside>
+
+<div id="main">
+<header>
+  <button id="burger" aria-label="Menu">☰</button>
+  <input id="q" type="search" data-p="search">
+  <select id="lang" aria-label="Langue">
+    <option value="fr">🇫🇷 FR</option><option value="ar">🇲🇦 AR</option><option value="en">🇬🇧 EN</option>
+  </select>
+  <button id="theme" aria-label="Thème">🌓</button>
+  <button id="exp" data-i="export"></button>
+  <label class="btn"><span data-i="import"></span><input id="imp" type="file" accept=".json" hidden></label>
+</header>
+
+<main>
+  <section class="view" id="v-dash">
+    <h2 id="hello"></h2>
+    <p class="mu" id="clock"></p>
+    <input id="name" data-p="name">
+    <div class="grid" id="stats"></div>
+    <div class="grid2">
+      <div class="card"><h3 data-i="week"></h3><div id="week" class="bars"></div></div>
+      <div class="card"><h3 data-i="tasks"></h3><div id="dtasks"></div></div>
+      <div class="card"><h3 data-i="last"></h3><div id="dnotes"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-notes" hidden>
+    <form id="nf" class="card">
+      <input id="nt" required data-p="title">
+      <div class="row"><input id="ns" data-p="subject"><input id="ng" data-p="tags"></div>
+      <textarea id="nb" rows="5" data-p="content"></textarea>
+      <div class="row">
+        <label><input type="checkbox" id="np"> <span data-i="pin"></span></label>
+        <button class="pri" data-i="save"></button>
+        <button type="button" id="nc" data-i="clear"></button>
+      </div>
+    </form>
+    <div class="row tools">
+      <select id="sort"><option value="new" data-i="sortNew"></option><option value="old" data-i="sortOld"></option></select>
+      <button id="etxt">TXT</button><button id="ejson">JSON</button><button id="eprint" data-i="print"></button>
+    </div>
+    <div id="nlist" class="grid2"></div>
+    <h3 data-i="trash"></h3><div id="tlist"></div>
+  </section>
+
+  <section class="view" id="v-tasks" hidden>
+    <form id="tf" class="card row">
+      <input id="tt" required data-p="title"><input id="ts" data-p="subject">
+      <input id="td" type="date" aria-label="Date">
+      <select id="tp"><option value="1" data-i="high"></option><option value="2" data-i="mid"></option><option value="3" data-i="low"></option></select>
+      <button class="pri" data-i="add"></button>
+    </form>
+    <div id="tl"></div>
+  </section>
+
+  <section class="view" id="v-pomo" hidden>
+    <div class="card pomo">
+      <svg viewBox="0 0 200 200" width="240" height="240" aria-hidden="true">
+        <circle cx="100" cy="100" r="90" class="trk"/>
+        <circle cx="100" cy="100" r="90" id="ring"/>
+      </svg>
+      <div id="tm" class="big">25:00</div><div id="mode" class="mu"></div>
+      <div class="row">
+        <button class="pri" id="pgo" data-i="start"></button>
+        <button id="prs" data-i="reset"></button>
+        <label><input type="checkbox" id="snd"> <span data-i="sound"></span></label>
+      </div>
+      <div class="row">
+        <label><span data-i="work"></span> <input id="cw" type="number" min="1" max="90"></label>
+        <label><span data-i="short"></span> <input id="cs" type="number" min="1" max="30"></label>
+        <label><span data-i="long"></span> <input id="cl" type="number" min="1" max="60"></label>
+      </div>
+      <p id="pst" class="mu"></p>
+    </div>
+  </section>
+
+  <section class="view" id="v-grades" hidden>
+    <form id="gf" class="card row">
+      <input id="gs" required data-p="subject">
+      <input id="gm" type="number" min="0" max="20" step="0.25" required data-p="mark">
+      <input id="gc" type="number" min="1" max="20" value="1" required data-p="coef">
+      <button class="pri" data-i="add"></button>
+    </form>
+    <label class="row"><span data-i="goal"></span> <input id="goal" type="number" min="0" max="20" step="0.5"></label>
+    <div id="gsum" class="card"></div>
+    <div id="gl"></div>
+  </section>
+
+  <section class="view" id="v-cards" hidden>
+    <form id="cf" class="card row">
+      <input id="cq" required data-p="front"><input id="ca" required data-p="back">
+      <button class="pri" data-i="add"></button>
+    </form>
+    <p class="mu" data-i="tip"></p>
+    <div id="cl2" class="grid2"></div>
+  </section>
+</main>
+</div>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
